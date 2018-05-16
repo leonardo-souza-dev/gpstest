@@ -1,0 +1,48 @@
+﻿<ion-content ng-controller="MapController">
+    <div class="container center-block">
+
+        <div ng-show="estaPertoDeAlgumLocal && aindaNaoEscolheuSeFazCheckinOuNao">
+            <div class="row">
+                <div style="padding:24px;">
+                    Deseja fazer checkin em {{localMaisPerto.nome}}?
+                </div>
+            </div>
+
+            <div class="row center-block">
+                <a href="#" class="btn btn-default" ng-click="naoFazerCheckin()">Não</a>
+                <a href="#" class="btn btn-success" ng-click="fazerCheckin()">Sim</a>
+            </div>
+        </div>
+
+        <div ng-show="checkinFeito">
+            <div class="row">
+                <div class="alert alert-success">
+                    Checkin realizado em {{localMaisPerto.nome}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row center-block">
+            <br />
+            <br />
+            <a class="btn btn-primary" href="#" ng-click="atualizarLocalizacao()">Atualizar Localização</a>
+            <br />
+            <br />
+        </div>
+
+        <div class="row">
+            <div id="map" data-tap-disabled="true" ng-hide="true" style="width:40px;height:40px;"></div>
+
+            <table class="table table-striped">
+                <tr>
+                    <td>Estabelecimento</td>
+                    <td>Distancia (metros)</td>
+                </tr>
+                <tr ng-repeat="local in locais">
+                    <td>{{local.nome}}</td>
+                    <td>{{local.distancia}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</ion-content>
